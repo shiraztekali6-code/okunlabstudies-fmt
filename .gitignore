@@ -1,0 +1,54 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next
+/out
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# local env files
+.env*.local
+.env*.save
+
+# unrelated local analysis artifacts
+/mouse_activity_*
+/outputs
+/examples
+~$*
+
+# unrelated local analysis/statistics tooling
+/scripts/analyze_mouse_activity_*.R
+/scripts/debug_registration_flow.sh
+/scripts/make_prism_ready_mouse_activity_replicates_from_raw.py
+/scripts/statnav_*.R
+/scripts/statnav_backend.py
+/src/app/statistics-navigator
+/src/app/api/statnav
+/src/components/statnav
+/src/lib/statnav
+
+# superseded one-page section components from earlier drafts
+/src/components/about-research.tsx
+/src/components/contact-section.tsx
+/src/components/faq-section.tsx
+/src/components/final-cta.tsx
+/src/components/participation-timeline.tsx
+/src/components/privacy-section.tsx
+/src/components/who-can-participate.tsx
+/src/components/why-participate.tsx
+/src/data
+
+# typescript
+*.tsbuildinfo
