@@ -105,6 +105,12 @@ export const translations = {
       title: "הרשמי להתעניינות במחקר",
       description:
         "תודה על נכונותך לשקול השתתפות. לאחר שליחת הטופס, צוות המחקר עשוי ליצור איתך קשר כדי לבדוק התאמה ולתאם את המשך התהליך. ההרשמה אינה מבטיחה התאמה למחקר.",
+      eligibilityTitle: "מי יכולה להשתתף?",
+      eligibility: [
+        "אם לילד או ילדה עם תסמונת דאון",
+        "גיל 18 ומעלה",
+        "נכונות לתרום דגימת דם"
+      ],
       fields: {
         fullName: "שם מלא",
         email: "אימייל",
@@ -265,6 +271,12 @@ export const translations = {
       title: "Register your interest in joining the study",
       description:
         "Thank you for considering participation. After you submit this form, the research team may contact you to discuss eligibility and scheduling. Registration does not guarantee eligibility.",
+      eligibilityTitle: "Who Can Participate?",
+      eligibility: [
+        "Mother of a child with Down syndrome",
+        "Age 18 or older",
+        "Willing to donate a blood sample"
+      ],
       fields: {
         fullName: "Full Name",
         email: "Email",

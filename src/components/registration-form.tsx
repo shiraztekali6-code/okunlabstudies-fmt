@@ -117,6 +117,16 @@ export function RegistrationForm() {
         <p className="eyebrow">{t.form.eyebrow}</p>
         <h3>{t.form.title}</h3>
         <p>{t.form.description}</p>
+        <div className="registration-eligibility">
+          <p>
+            <strong>{t.form.eligibilityTitle}</strong>
+          </p>
+          <ul>
+            {t.form.eligibility.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <form className="registration-form" onSubmit={onSubmit} noValidate>

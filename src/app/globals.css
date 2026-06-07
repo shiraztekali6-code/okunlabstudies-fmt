@@ -613,6 +613,25 @@ html[dir="rtl"] .hero-impact {
   color: var(--muted);
 }
 
+.registration-eligibility {
+  margin-top: 1.1rem;
+  border-top: 1px solid rgba(23, 61, 90, 0.14);
+  padding-top: 1rem;
+  color: var(--text);
+}
+
+.registration-eligibility p {
+  margin-bottom: 0.45rem;
+}
+
+.registration-eligibility ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding-inline-start: 1.2rem;
+  color: var(--muted);
+}
+
 .info-grid,
 .reasons-grid,
 .contact-grid {
