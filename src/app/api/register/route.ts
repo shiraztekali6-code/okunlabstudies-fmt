@@ -9,6 +9,9 @@ import { validateRegistrationPayload } from "@/lib/registration-validation";
 
 export const runtime = "nodejs";
 
+const DEFAULT_APPS_SCRIPT_WEB_APP_URL =
+  "https://script.google.com/macros/s/AKfycbzGGALIttQlo4fRnLOdeF-iFLWLAy9gyAd47F4NmiKMffP6QQPyoo3l1J20vryL3motdQ/exec";
+
 type AppsScriptResponse = {
   ok?: boolean;
   code?: string;
@@ -49,6 +52,13 @@ function normalizeErrorDetail(detail: string): string {
   return detail.replace(/\s+/g, " ").trim().slice(0, 500);
 }
 
+function getAppsScriptUrl(): string {
+  return (
+    process.env.GOOGLE_APPS_SCRIPT_WEB_APP_URL?.trim() ||
+    DEFAULT_APPS_SCRIPT_WEB_APP_URL
+  );
+}
+
 function isHtmlResponse(text: string): boolean {
   return /^<!doctype html>|^<html[\s>]/i.test(text.trim());
 }
@@ -75,16 +85,18 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
   }
 
-  const scriptUrl = process.env.GOOGLE_APPS_SCRIPT_WEB_APP_URL;
+  const configuredScriptUrl = process.env.GOOGLE_APPS_SCRIPT_WEB_APP_URL?.trim();
+  const scriptUrl = getAppsScriptUrl();
   const sharedSecret = process.env.GOOGLE_APPS_SCRIPT_SHARED_SECRET;
 
   return NextResponse.json(
     {
       ok: Boolean(scriptUrl && sharedSecret),
       requiredVariables: {
-        GOOGLE_APPS_SCRIPT_WEB_APP_URL: Boolean(scriptUrl),
+        GOOGLE_APPS_SCRIPT_WEB_APP_URL: Boolean(configuredScriptUrl),
         GOOGLE_APPS_SCRIPT_SHARED_SECRET: Boolean(sharedSecret)
       },
+      usingFallbackAppsScriptUrl: !configuredScriptUrl,
       scriptUrlLooksLikeAppsScript: Boolean(
         scriptUrl?.startsWith("https://script.google.com/macros/s/")
       ),
@@ -121,12 +133,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: validationResult.error }, { status: 400 });
   }
 
-  const scriptUrl = process.env.GOOGLE_APPS_SCRIPT_WEB_APP_URL;
+  const configuredScriptUrl = process.env.GOOGLE_APPS_SCRIPT_WEB_APP_URL?.trim();
+  const scriptUrl = getAppsScriptUrl();
   const sharedSecret = process.env.GOOGLE_APPS_SCRIPT_SHARED_SECRET;
 
   if (!scriptUrl || !sharedSecret) {
     console.error("[register-api] Missing required environment variables.", {
-      hasScriptUrl: Boolean(scriptUrl),
+      hasScriptUrl: Boolean(configuredScriptUrl),
+      usingFallbackAppsScriptUrl: !configuredScriptUrl,
       hasSharedSecret: Boolean(sharedSecret)
     });
 
