@@ -49,6 +49,26 @@ function normalizeErrorDetail(detail: string): string {
   return detail.replace(/\s+/g, " ").trim().slice(0, 500);
 }
 
+function isHtmlResponse(text: string): boolean {
+  return /^<!doctype html>|^<html[\s>]/i.test(text.trim());
+}
+
+function getUpstreamErrorCode(
+  status: number,
+  data: AppsScriptResponse,
+  text: string
+): string | undefined {
+  if (data.code) {
+    return data.code;
+  }
+
+  if ((status === 401 || status === 403) && isHtmlResponse(text)) {
+    return "apps_script_access_denied";
+  }
+
+  return undefined;
+}
+
 export async function POST(request: Request) {
   let rawBody: unknown;
 
@@ -129,22 +149,29 @@ export async function POST(request: Request) {
   }
 
   if (!upstreamData.ok) {
-    const detail =
+    const upstreamCode = getUpstreamErrorCode(
+      upstreamStatus,
+      upstreamData,
+      upstreamText
+    );
+    const rawDetail =
       typeof upstreamData.error === "string" && upstreamData.error
         ? upstreamData.error
         : upstreamText
           ? normalizeErrorDetail(upstreamText)
           : undefined;
+    const participantDetail = isHtmlResponse(upstreamText) ? undefined : rawDetail;
 
     console.error("[register-api] Apps Script returned non-ok response.", {
       status: upstreamStatus,
       payload: upstreamData,
-      text: detail
+      code: upstreamCode,
+      text: rawDetail
     });
 
-    const statusCode = upstreamData.code === "validation_error" ? 400 : 502;
+    const statusCode = upstreamCode === "validation_error" ? 400 : 502;
     return NextResponse.json(
-      { error: mapUpstreamError(language, upstreamData.code, detail) },
+      { error: mapUpstreamError(language, upstreamCode, participantDetail) },
       { status: statusCode }
     );
   }

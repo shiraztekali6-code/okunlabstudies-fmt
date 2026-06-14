@@ -165,6 +165,8 @@ export const translations = {
         email_failed: "לא ניתן היה להשלים את ההרשמה עקב בעיה בשליחת אימייל.",
         unauthorized: "אירעה בעיית אימות בשירות ההרשמה. אנא פני למנהל האתר.",
         misconfigured: "שירות ההרשמה אינו מוגדר במלואו. אנא פני למנהל האתר.",
+        apps_script_access_denied:
+          "שירות ההרשמה מחובר, אך אין לו הרשאת גישה לפריסת Google Apps Script. אנא פני למנהל האתר.",
         default: "לא ניתן לשלוח את ההרשמה כרגע. אנא נסי שוב בעוד רגע."
       }
     },
@@ -341,6 +343,8 @@ export const translations = {
           "Your registration could not be completed due to an email service issue. Please try again shortly.",
         unauthorized: "Registration service authentication failed. Please contact the site administrator.",
         misconfigured: "Registration service is not fully configured yet. Please contact the site administrator.",
+        apps_script_access_denied:
+          "The registration service is connected, but the Google Apps Script deployment is blocking access. Please contact the site administrator.",
         default: "Unable to submit your registration right now. Please try again in a moment."
       }
     },
