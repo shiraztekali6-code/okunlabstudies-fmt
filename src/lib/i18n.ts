@@ -36,8 +36,8 @@ export const translations = {
       secondaryCta: "למה המחקר חשוב?"
     },
     video: {
-      title: "הזמנה אישית מפרופ' איתן אוקון",
-      subtitle: "למה המחקר הזה חשוב, ואיך ההשתתפות שלך יכולה לסייע לקידום המחקר.",
+      title: "",
+      subtitle: "",
       placeholderTitle: "מקום שמור לסרטון הזמנה אישי",
       placeholderHeading: "כאן יופיע סרטון ההזמנה",
       placeholderText:
