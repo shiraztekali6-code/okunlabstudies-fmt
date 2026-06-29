@@ -3,11 +3,15 @@
 import { useLanguage } from "@/components/language-provider";
 
 const INVITATION_VIDEO_SRC = "/videos/prof-okun-invitation.mp4";
-const INVITATION_VIDEO_POSTER = "/videos/prof-okun-invitation-poster.jpg";
+const INVITATION_VIDEO_POSTERS = {
+  en: "/videos/prof-okun-invitation-poster-en.png",
+  he: "/videos/prof-okun-invitation-poster.jpg"
+} as const;
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const hasVideo = Boolean(INVITATION_VIDEO_SRC);
+  const invitationVideoPoster = INVITATION_VIDEO_POSTERS[language];
 
   return (
     <section id="top" className="hero hero-photo-section">
@@ -44,7 +48,7 @@ export function HeroSection() {
               <video
                 className="study-video"
                 controls
-                poster={INVITATION_VIDEO_POSTER}
+                poster={invitationVideoPoster}
                 preload="metadata"
               >
                 <source src={INVITATION_VIDEO_SRC} type="video/mp4" />
