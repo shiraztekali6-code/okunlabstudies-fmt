@@ -1,13 +1,12 @@
-Place the final study invitation video in this folder.
+The study invitation video is stored in this folder.
 
-Recommended filename:
+Current filename:
 
 ```txt
 prof-okun-invitation.mp4
 ```
 
-After adding the file, update `INVITATION_VIDEO_SRC` in
-`src/components/hero-section.tsx` to:
+The homepage video source is configured in `src/components/hero-section.tsx`:
 
 ```ts
 const INVITATION_VIDEO_SRC = "/videos/prof-okun-invitation.mp4";

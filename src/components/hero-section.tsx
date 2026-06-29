@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/components/language-provider";
 
-const INVITATION_VIDEO_SRC = "";
+const INVITATION_VIDEO_SRC = "/videos/prof-okun-invitation.mp4";
 
 export function HeroSection() {
   const { t } = useLanguage();
