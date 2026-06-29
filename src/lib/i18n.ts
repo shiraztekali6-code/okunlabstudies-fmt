@@ -226,19 +226,19 @@ export const translations = {
       eyebrow: "Why This Research Matters",
       title: "Why Are We Studying Mothers of Children with Down Syndrome?",
       intro: [
-        "Several studies have reported that mothers of children with Down syndrome may have a higher risk of developing Alzheimer's disease later in life.",
-        "However, the reason for this association is still not fully understood.",
-        "Research in recent years has shown that during pregnancy, cells, proteins, DNA, and other biological materials can pass between the fetus and the mother. Some of these materials may remain in the mother's body for many years after birth.",
-        "In our study, we are investigating whether these biological processes may be related to long-term changes in brain health, and whether they could help future research in earlier detection and better understanding of Alzheimer's disease."
+        "Pregnancy involves an extraordinary biological connection between mother and child. During pregnancy, cells, proteins, DNA, and other biological materials can pass between the fetus and the mother. Researchers have found that some fetal cells can be detected in the mother's body many years later.",
+        "Several studies have observed differences in long-term brain health among mothers of children with Down syndrome, but the biological factors underlying these findings are still not well understood. We are also interested in understanding whether these biological processes may be relevant to conditions related to brain aging, including Alzheimer's disease.",
+        "Our research aims to examine whether biological signals exchanged during pregnancy may contribute to long-term maternal health. By studying these processes, we hope to advance scientific understanding of pregnancy, aging, and brain health, and to support future research in this field.",
+        "If you are the mother of a child with Down syndrome, your participation may help advance research on pregnancy, maternal health, and long-term brain health."
       ],
       cards: [
         {
-          title: "Women & Alzheimer's",
-          text: "Women account for a significant proportion of Alzheimer's disease cases worldwide."
+          title: "Women & Brain Health",
+          text: "Understanding the factors that influence women's brain health across the lifespan is an important area of medical research."
         },
         {
-          title: "Down Syndrome & Alzheimer's",
-          text: "Several studies have reported an increased risk of Alzheimer's disease among mothers of children with Down syndrome."
+          title: "Down Syndrome & Maternal Health",
+          text: "Previous studies have identified differences in long-term brain health among mothers of children with Down syndrome, highlighting important questions for further research."
         },
         {
           title: "Mother-Fetus Connection",
@@ -246,15 +246,15 @@ export const translations = {
         },
         {
           title: "Our Research",
-          text: "Preliminary findings suggest that biological materials related to a Down syndrome pregnancy may transfer to the mother and persist after pregnancy."
+          text: "Preliminary findings suggest that biological materials exchanged during pregnancy may remain detectable in mothers for many years."
         },
         {
           title: "What We Are Investigating",
-          text: "Whether these processes may be related to long-term changes in brain health and the development of Alzheimer's disease."
+          text: "Whether these processes may be related to maternal brain health across the lifespan."
         }
       ],
       closing:
-        "Your participation can help us better understand the relationship between pregnancy, Down syndrome, and brain health across life."
+        "Your participation can help researchers better understand how pregnancy may influence maternal health and brain health across the lifespan."
     },
     participation: {
       eyebrow: "Participation & Registration",
@@ -274,17 +274,17 @@ export const translations = {
       whyTitle: "Why Participate?",
       whyIntro: "Your participation may help us:",
       reasons: [
-        "Better understand long-term biological effects of pregnancy",
+        "Better understand the long-term biological effects of pregnancy",
         "Identify biological markers that may be associated with Alzheimer's disease risk",
         "Advance research that may one day support earlier detection",
-        "Expand knowledge about women's health across life"
+        "Expand knowledge about women's health across the lifespan"
       ],
       final:
         "Every blood sample represents a personal story and helps us move closer to understanding questions that remain unanswered."
     },
     form: {
       eyebrow: "Registration Form",
-      title: "Register your interest in joining the study",
+      title: "We would be happy to know if you are interested in receiving more information or joining the study",
       description:
         "Thank you for considering participation. After you submit this form, the research team may contact you to discuss eligibility and scheduling. Registration does not guarantee eligibility.",
       eligibilityTitle: "Who Can Participate?",
