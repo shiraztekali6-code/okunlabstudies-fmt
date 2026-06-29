@@ -42,6 +42,7 @@ export const translations = {
       placeholderHeading: "כאן יופיע סרטון ההזמנה",
       placeholderText:
         "כאשר הסרטון יהיה מוכן, הוא יוצג כאן ישירות באתר ללא מעבר ליוטיוב.",
+      playLabel: "הפעלת סרטון ההזמנה",
       unsupported: "הדפדפן שלך אינו תומך בהצגת וידאו."
     },
     research: {
@@ -220,6 +221,7 @@ export const translations = {
       placeholderHeading: "The invitation video will appear here",
       placeholderText:
         "When the video is ready, it will play directly on this website without sending visitors to YouTube.",
+      playLabel: "Play the invitation video",
       unsupported: "Your browser does not support embedded video."
     },
     research: {

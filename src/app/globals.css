@@ -385,6 +385,64 @@ html[dir="rtl"] .hero-impact {
   object-fit: cover;
 }
 
+.video-poster-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  color: #ffffff;
+  cursor: pointer;
+  background: var(--ink);
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.video-poster-overlay.is-hidden {
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1.018);
+  transition:
+    opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 1.6s;
+}
+
+.video-poster-overlay:focus-visible {
+  outline: 4px solid rgba(255, 255, 255, 0.88);
+  outline-offset: -0.55rem;
+}
+
+.video-poster-image,
+.video-poster-scrim {
+  position: absolute;
+  inset: 0;
+}
+
+.video-poster-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-poster-scrim {
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.12), transparent 18rem),
+    linear-gradient(180deg, rgba(13, 42, 67, 0.06), rgba(13, 42, 67, 0.36));
+}
+
+.video-poster-play {
+  position: relative;
+  z-index: 1;
+}
+
 .native-video-placeholder {
   display: grid;
   min-height: 100%;
@@ -429,6 +487,19 @@ html[dir="rtl"] .hero-impact {
   max-width: 34rem;
   color: rgba(255, 255, 255, 0.82);
   line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-poster-overlay {
+    transition:
+      opacity 0.2s ease;
+  }
+
+  .video-poster-overlay.is-hidden {
+    transition:
+      opacity 0.2s ease,
+      visibility 0s linear 0.2s;
+  }
 }
 
 .cta-row {

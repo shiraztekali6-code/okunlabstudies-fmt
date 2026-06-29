@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import { useRef, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 
 const INVITATION_VIDEO_SRC = "/videos/prof-okun-invitation.mp4";
@@ -10,8 +12,24 @@ const INVITATION_VIDEO_POSTERS = {
 
 export function HeroSection() {
   const { language, t } = useLanguage();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPosterVisible, setIsPosterVisible] = useState(true);
   const hasVideo = Boolean(INVITATION_VIDEO_SRC);
   const invitationVideoPoster = INVITATION_VIDEO_POSTERS[language];
+
+  function handleVideoStart() {
+    const video = videoRef.current;
+
+    if (!video) {
+      setIsPosterVisible(false);
+      return;
+    }
+
+    setIsPosterVisible(false);
+    void video.play().catch(() => {
+      setIsPosterVisible(true);
+    });
+  }
 
   return (
     <section id="top" className="hero hero-photo-section">
@@ -45,15 +63,38 @@ export function HeroSection() {
           </div>
           <div className="video-frame" aria-label={t.video.placeholderTitle}>
             {hasVideo ? (
-              <video
-                className="study-video"
-                controls
-                poster={invitationVideoPoster}
-                preload="metadata"
-              >
-                <source src={INVITATION_VIDEO_SRC} type="video/mp4" />
-                {t.video.unsupported}
-              </video>
+              <>
+                <video
+                  ref={videoRef}
+                  className="study-video"
+                  controls
+                  onPlay={() => setIsPosterVisible(false)}
+                  poster={invitationVideoPoster}
+                  preload="metadata"
+                >
+                  <source src={INVITATION_VIDEO_SRC} type="video/mp4" />
+                  {t.video.unsupported}
+                </video>
+                <button
+                  type="button"
+                  aria-label={t.video.playLabel}
+                  className={`video-poster-overlay${isPosterVisible ? "" : " is-hidden"}`}
+                  onClick={handleVideoStart}
+                  tabIndex={isPosterVisible ? 0 : -1}
+                >
+                  <Image
+                    className="video-poster-image"
+                    src={invitationVideoPoster}
+                    alt=""
+                    fill
+                    sizes="(max-width: 900px) 100vw, 58vw"
+                  />
+                  <span className="video-poster-scrim" aria-hidden="true" />
+                  <span className="video-poster-play" aria-hidden="true">
+                    <span className="video-play-icon" />
+                  </span>
+                </button>
+              </>
             ) : (
               <div className="native-video-placeholder">
                 <span className="video-play-icon" aria-hidden="true" />
